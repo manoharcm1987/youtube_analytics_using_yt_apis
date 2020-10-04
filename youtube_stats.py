@@ -40,7 +40,7 @@ class YouTubeStats:
         print(f"Data written into {channel_name}.json file.")
 
 
-    def get_channel_data(self, order_by="date", limit=5):
+    def get_channel_data(self, order_by="date", limit=100):
         '''
         # Get channel video ids of the requested channel
         '''
@@ -54,6 +54,7 @@ class YouTubeStats:
                 data = self._get_single_video_data(video_id, part)
                 channel_videos[video_id].update(data)
         self.video_data = channel_videos
+        print(f"Length of channel videos reveived : {len(self.video_data)}")
         return self.video_data
 
     def _get_single_video_data(self, video_id, part):
